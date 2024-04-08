@@ -8,11 +8,34 @@
 import SwiftUI
 
 struct ItemView: View {
+    //MARK: Stored properties
+    let currentItem: TodoItem
+    
+    //MARK: Computed properties
+    
+    // Returns the button's user interface...
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        HStack {
+            
+            Image(systemName: currentItem.done == true ? "checkmark.circle" : "circle")
+                .foregroundColor(Color.blue)
+            
+            VStack (alignment: .leading) {
+                
+                // First layer
+                Text(currentItem.title)
+                    .foregroundStyle(.black)
+                
+            }
+        }
     }
 }
 
+
 #Preview {
-    ItemView()
+    List {
+        ItemView(currentItem: firstItem)
+        ItemView(currentItem: secondItem)
+        ItemView(currentItem: thirdItem)
+    }
 }
