@@ -9,33 +9,31 @@ import SwiftUI
 
 struct ItemView: View {
     //MARK: Stored properties
-    let currentItem: TodoItem
+    @Binding var currentItem: TodoItem
     
     //MARK: Computed properties
     
     // Returns the button's user interface...
     var body: some View {
-        HStack {
-            
-            Image(systemName: currentItem.done == true ? "checkmark.circle" : "circle")
-                .foregroundColor(Color.blue)
-            
-            VStack (alignment: .leading) {
-                
-                // First layer
+        Label(
+            title: {
                 Text(currentItem.title)
-                    .foregroundStyle(.black)
-                
-            }
+            }, icon: {
+                Image(systemName: currentItem.done == true ? "checkmark.circle" : "circle")
+                // Tap to mark
+                    .onTapGesture {
+                        currentItem.done.toggle()
+                    }
+                }
+            )
         }
     }
-}
 
 
 #Preview {
     List {
-        ItemView(currentItem: firstItem)
-        ItemView(currentItem: secondItem)
-        ItemView(currentItem: thirdItem)
+        ItemView(currentItem: Binding.constant(firstItem))
+        ItemView(currentItem: Binding.constant(secondItem))
+        ItemView(currentItem: Binding.constant(thirdItem))
     }
 }
