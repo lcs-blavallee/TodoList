@@ -9,8 +9,8 @@ import SwiftUI
 
 struct ItemView: View {
     //MARK: Stored properties
-    @Binding var currentItem: TodoItem
-    
+    @Bindable var currentItem: TodoItem
+
     //MARK: Computed properties
     
     // Returns the button's user interface...
