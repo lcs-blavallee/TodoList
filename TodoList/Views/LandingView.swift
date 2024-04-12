@@ -54,6 +54,9 @@ struct LandingView: View {
                 .padding(20)
             }
             .navigationTitle("To do")
+            .onAppear {
+                printCommandToOpenDatabaseFile()
+            }
             
         }
     }
@@ -80,6 +83,7 @@ struct LandingView: View {
         }
     }
 }
-//#Preview {
-//    LandingView()
-//}
+#Preview {
+    LandingView()
+        .modelContainer(TodoItem.preview)
+}
